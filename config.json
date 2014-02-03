@@ -1,0 +1,16 @@
+{
+    "port": 8080,
+    "timezone": "Europe/London",
+    "db": {
+        "type": "memory",
+        "setup": {
+        },
+        "autoupdate": true
+    },
+    "clients": [
+        "./subscribers/github/github.js"
+    ],
+    "publishers": [
+        "./publishers/pubsub/pubsub.js"
+    ]
+}
