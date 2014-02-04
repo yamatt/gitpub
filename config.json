@@ -1,7 +1,7 @@
 {
     "port": 8080,
     "timezone": "Europe/London",
-    "db": {
+    "database": {
         "type": "memory",
         "setup": {
         },
