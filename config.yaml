@@ -1,0 +1,10 @@
+port: 8080
+timezone: Europe/London
+database:
+    type: memory
+    setup: ""
+    autoupdate: true
+subscribers:
+  - ./subscribers/github/github.js
+publishers:
+  - ./publishers/pubsub/pubsub.js

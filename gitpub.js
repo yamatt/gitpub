@@ -1,6 +1,6 @@
 #!/bin/env node
 
-var config = require("./config.json"),
+var config = require("./config")(),
     db = require("./database")(config.database),
     express = require("express"),
     _ = require("underscore");
