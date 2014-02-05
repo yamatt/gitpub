@@ -1,23 +1,15 @@
 #!/bin/env node
 
 var config = require("./config")(),
+    ModuleLoader = require("module_loader"),
     db = require("./database")(config.database),
     express = require("express"),
     _ = require("underscore");
 
 process.env.TZ = config.timezone;
 
-function load_modules(module_paths) {
-    var modules = [];
-    _.each(module_paths, function(module_path) {
-        var module = require(module_path);
-        modules.push(module);
-    });
-    return modules;
-}
-
 function handle_message(source, message_object) {
-    _.each(publishers, function (publisher) {
+    _.each(publishers.modules, function (publisher) {
         if (publisher.match(source) {
             publisher.handle(source, message_object);
         }
@@ -26,8 +18,8 @@ function handle_message(source, message_object) {
 
 var server = express();
 
-var publishers = load_modules(config.publishers);
-var subcribers = load_modules(config.subscribers);
+var publishers = new ModuleLoader({"dir": "publishers"}).load(config.publishers);
+var subcribers = new ModuleLoader({"dir": "subscribers"}).load(config.subscribers);
 
 // setup clients
 _.each(subcribers, function(subscriber) {

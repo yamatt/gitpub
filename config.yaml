@@ -5,6 +5,6 @@ database:
     setup: ""
     autoupdate: true
 subscribers:
-  - ./subscribers/github/github.js
+  - name: github
 publishers:
-  - ./publishers/pubsub/pubsub.js
+  - name: pubsub
