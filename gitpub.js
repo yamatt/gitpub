@@ -16,15 +16,18 @@ function handle_message(source, message_object) {
     });
 }
 
-var server = express();
+var server = null;
 
-var publishers = new ModuleLoader({"dir": "publishers"}).load(config.publishers);
-var subcribers = new ModuleLoader({"dir": "subscribers"}).load(config.subscribers);
+var publishers = new ModuleLoader("publishers").load(config.publishers);
+var subcribers = new ModuleLoader("subscribers").load(config.subscribers);
 
 // setup clients
 _.each(subcribers, function(subscriber) {
     // set up express apps
     if (subscriber.express) {
+        if (!server) {
+            server = express();
+        }
         server.use(
             "/" + subscriber_module.name,
             subscriber_module.app(

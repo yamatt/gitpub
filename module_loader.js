@@ -1,14 +1,14 @@
 var _ = require("underscore"),
     path = require("path");
 
-module.exports = function (init_options) {
+module.exports = function (dir, init_options) {
     var options = init_options || {
         "app_name": "app"
     }
     return {
         "modules": [],
         "load_module": function(name, module_options) {
-            var module_path = path.join(__dirname, options.dir, name, options.app_name);
+            var module_path = path.join(__dirname, dir, name, options.app_name);
             var module = require(module_path);
             this.modules.push(module);
         },
