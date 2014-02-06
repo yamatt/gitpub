@@ -1,6 +1,6 @@
 {
   "name": "gitpub",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A service to allow anonymous PubSubHubbub compliant subscriptions to GitHub webhooks",
   "main": "index.js",
   "dependencies": {
@@ -21,6 +21,9 @@
     "pubsubhubbub",
     "github"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Matt Copperwaite",
   "license": "AGPLv3",
   "bugs": {
