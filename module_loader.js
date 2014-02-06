@@ -7,15 +7,15 @@ module.exports = function (dir, init_options) {
     }
     return {
         "modules": [],
-        "load_module": function(name, module_options) {
+        "load_module": function(name) {
             var module_path = path.join(__dirname, dir, name, options.app_name);
             var module = require(module_path);
             this.modules.push(module);
         },
-        "load": function(modules, override_module_options) {
+        "load": function(modules) {
+            var that = this;
             _.each(modules, function(module) {
-                var module_options = _.extend(module, override_module_options);
-                this.load_module(module.name, module_options);
+                that.load_module(module.name);
             });
         }
     }
