@@ -10,7 +10,7 @@ process.env.TZ = config.timezone;
 
 function handle_message(source, message_object) {
     _.each(publishers.modules, function (publisher) {
-        if (publisher.match(source) {
+        if (publisher.match(source)) {
             publisher.handle(source, message_object);
         }
     });
