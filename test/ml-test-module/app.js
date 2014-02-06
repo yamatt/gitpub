@@ -1,5 +1,6 @@
-module.exports = function (options) {
-    return {
-        "options": options
+module.exports = {
+    "name": "ml-test-module",
+    "run": function(options) {
+        return options
     }
 }
